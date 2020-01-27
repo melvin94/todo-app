@@ -1,0 +1,23 @@
+h1 To-Do List
+p
+    = link_to 'Add task', new_task_path
+    br
+    = link_to 'View completed', tasks_path(show: "complete")
+    br
+    = link_to 'View incomplete', tasks_path(show: "incomplete")
+    br
+    = link_to 'View all', tasks_path(show: "all")
+
+table
+    tr
+        th
+            strong Task
+        th
+            strong Status
+    - @tasks.each do |task|
+        tr
+            td = task.task
+            td = task.done ? 'complete' : 'incomplete'
+            td = link_to 'Toggle', edit_task_path(toggle: true, id: task)
+            td = link_to 'Edit', edit_task_path(task)
+            td = link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }

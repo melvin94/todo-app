@@ -1,0 +1,10 @@
+p = link_to 'Go Back', tasks_path
+h1 Add a new task
+= form_with(model: @task, local: true) do |form|
+    = form.hidden_field :done, value: false
+    p
+        = form.label :task
+        br
+        = form.text_field :task
+    p
+        = form.submit

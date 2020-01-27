@@ -1,0 +1,9 @@
+p = link_to 'Go Back', tasks_path
+h1 Edit task
+= form_with(model: @task, local: true) do |form|
+    p
+        = form.label :task
+        br
+        = form.text_field :task
+    p
+        = form.submit
